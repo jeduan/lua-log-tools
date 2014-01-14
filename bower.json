@@ -1,5 +1,8 @@
 {
-  "name": "mixpanel",
-  "version": "0.1.0",
-  "main": "mixpanel.lua"
+  "name": "log",
+  "version": "0.2.0",
+  "main": "log.lua",
+  "dependencies": {
+    "inspect": "~2.0.0"
+  }
 }
