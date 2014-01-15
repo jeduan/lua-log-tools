@@ -4,7 +4,7 @@ local mt = {}
 
 M.disabled = false
 
-function M.log(...)
+local function _log(options, ...)
 	if M.disabled then
 		return
 	end
@@ -12,13 +12,19 @@ function M.log(...)
 	local args = {...}
 	local tabs = {}
 	for i = 1, #args do
-		tabs[i] = inspect(args[i])
+		tabs[i] = inspect(args[i], options)
 	end
 	print(table.concat(tabs, '\t'))
 end
 
+for i = 1, 5 do
+	M['log'..i] = function(...)
+		_log({depth = i}, ...)
+	end
+end
+
 mt.__call = function (t, ...)
-	M.log(...)
+	_log({}, ...)
 end
 
 mt.__index = M

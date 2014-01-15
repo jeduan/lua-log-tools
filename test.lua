@@ -7,4 +7,6 @@ local f = setmetatable({}, {
 })
 log(f)
 
-log('foo', {foo = 'bar'})
+log('foo', 2, false, {foo = 'bar'})
+
+log.log1 {foo = {bar = {baz = 'alpha'}}}

@@ -12,8 +12,8 @@ local log = require 'vendor.log.log'
 log({foo = 'bar'})
 
 --[[ Output
-table: 0x0000ffff {
- [foo] => 'bar'
+{
+ foo = "bar"
 }
 --]]
 
@@ -29,3 +29,16 @@ log({foo = 'bar'})
 --[[ Output:
 --]]
 ```
+
+## Changelog
+
+0.3
+
+Adds functions log.log[1-5] that cap the depth of printing
+
+0.2
+
+Prints a table's metatable.
+Prints each element passed to it in tabs, similar to how `print` does it
+
+
