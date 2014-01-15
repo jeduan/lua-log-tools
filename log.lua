@@ -9,7 +9,12 @@ function M.log(...)
 		return
 	end
 
-	inspect(...)
+	local args = {...}
+	local tabs = {}
+	for i = 1, #args do
+		tabs[i] = inspect(args[i])
+	end
+	print(table.concat(tabs, '\t'))
 end
 
 mt.__call = function (t, ...)
