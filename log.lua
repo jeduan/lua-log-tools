@@ -11,8 +11,18 @@ local function _log(options, ...)
 
 	local args = {...}
 	local tabs = {}
+	local shouldJustPrint = {
+		string = true,
+		number = true,
+		['nil'] = true,
+		boolean = true,
+}
 	for i = 1, #args do
-		tabs[i] = inspect(args[i], options)
+		if shouldJustPrint[type(args[i])] then
+			tabs[i] = tostring(args[i])
+		else
+			tabs[i] = inspect(args[i], options)
+		end
 	end
 	print(table.concat(tabs, '\t'))
 end
