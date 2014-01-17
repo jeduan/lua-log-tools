@@ -33,6 +33,12 @@ for i = 1, 5 do
 	end
 end
 
+function M.line(...)
+	print '-------------------------------'
+	_log({}, ...)
+	print '-------------------------------'
+end
+
 mt.__call = function (t, ...)
 	_log({}, ...)
 end
