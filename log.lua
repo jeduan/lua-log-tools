@@ -12,11 +12,13 @@ local function _log(options, ...)
 	local args = {...}
 	local tabs = {}
 	local shouldJustPrint = {
-		string = true,
 		number = true,
 		['nil'] = true,
 		boolean = true,
 }
+	if options.line then
+		print '----------------------'
+	end
 	for i = 1, #args do
 		if shouldJustPrint[type(args[i])] then
 			tabs[i] = tostring(args[i])
@@ -25,6 +27,9 @@ local function _log(options, ...)
 		end
 	end
 	print(table.concat(tabs, '\t'))
+	if options.line then
+		print '----------------------'
+	end
 end
 
 for i = 1, 5 do
@@ -34,9 +39,7 @@ for i = 1, 5 do
 end
 
 function M.line(...)
-	print '-------------------------------'
-	_log({}, ...)
-	print '-------------------------------'
+	_log({line = true}, ...)
 end
 
 mt.__call = function (t, ...)
